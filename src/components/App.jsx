@@ -38,13 +38,10 @@ class App extends Component {
     }));
   };
 
-  deleteContact = e => {
-    this.state.contacts.forEach((value, key) => {
-      if (value.id === e.target.id) {
-        this.state.contacts.splice(key, 1);
-        this.setState(this.state.contacts);
-      }
-    });
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   onFilter = e => {

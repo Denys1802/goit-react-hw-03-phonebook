@@ -13,7 +13,7 @@ class Contacts extends Component {
           </p>
           <ContactsBtn
             type="button"
-            onClick={this.props.deleteContact}
+            onClick={() => this.props.deleteContact(contact.id)}
             id={contact.id}
           >
             Delete
