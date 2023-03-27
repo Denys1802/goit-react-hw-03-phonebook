@@ -71,11 +71,7 @@ class App extends Component {
           />
 
           <h2>Contacts</h2>
-          <Filter
-            onFilter={this.onFilter}
-            filter={this.state.filter}
-            filteredContact={this.filterContact}
-          />
+          <Filter onFilter={this.onFilter} filter={this.state.filter} />
 
           <Contacts
             filter={this.state.filter}
