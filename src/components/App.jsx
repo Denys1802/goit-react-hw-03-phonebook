@@ -34,7 +34,7 @@ class App extends Component {
 
   handleSubmitForm = newContact => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+      contacts: [newContact, ...prevState.contacts],
     }));
   };
 
