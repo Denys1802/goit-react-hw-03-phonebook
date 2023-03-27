@@ -32,7 +32,7 @@ class App extends Component {
     }
   }
 
-  handleSubmitForm = newContact => {
+  addContactsUser = newContact => {
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
@@ -63,7 +63,7 @@ class App extends Component {
         <Section>
           <h1>Phonebook</h1>
           <UserForm
-            onSubmit={this.handleSubmitForm}
+            onSubmit={this.addContactsUser}
             contacts={this.state.contacts}
           />
 
