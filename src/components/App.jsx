@@ -16,26 +16,52 @@ class App extends Component {
   };
 
   componentDidMount() {
-    //console.log('didmount');
     const contactsUser = localStorage.getItem('contacts');
     const parsedContactsUser = JSON.parse(contactsUser);
     if (parsedContactsUser) {
       this.setState({ contacts: parsedContactsUser });
     }
-    //console.log(parsedContactsUser);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //console.log('didUpdate');
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
-  addContactsUser = newContact => {
+  //   addContactsUser = newContact => {
+  //     this.setState(prevState => ({
+  //       contacts: [newContact, ...prevState.contacts],
+  //     }));
+  //   };
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, number, contacts } = this.state;
+    if (
+      contacts.find(el => {
+        return el.name === name;
+      })
+    ) {
+      alert('Its allready in case');
+      this.reset();
+      return;
+    }
+
     this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
+      contacts: [
+        { name: name, number: number, id: nanoid() },
+        ...prevState.contacts,
+      ],
     }));
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
   };
 
   deleteContact = contactId => {
@@ -63,8 +89,10 @@ class App extends Component {
         <Section>
           <h1>Phonebook</h1>
           <UserForm
-            onSubmit={this.addContactsUser}
-            contacts={this.state.contacts}
+            onSubmit={this.handleSubmit}
+            onChange={this.handleChange}
+            numberValue={this.state.number}
+            nameValue={this.state.name}
           />
 
           <h2>Contacts</h2>
