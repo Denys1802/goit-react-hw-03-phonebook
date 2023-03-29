@@ -13,6 +13,8 @@ class App extends Component {
       { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+    name: '',
+    number: '',
   };
 
   componentDidMount() {
@@ -28,15 +30,6 @@ class App extends Component {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
-
-  //   addContactsUser = newContact => {
-  //     this.setState(prevState => ({
-  //       contacts: [newContact, ...prevState.contacts],
-  //     }));
-  //   };
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -58,6 +51,10 @@ class App extends Component {
       ],
     }));
     this.reset();
+  };
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
   reset = () => {

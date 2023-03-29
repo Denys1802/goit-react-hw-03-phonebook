@@ -4,35 +4,6 @@ import { Component } from 'react';
 import { Form, Label, Input, Button } from './UserForm.styled';
 
 class UserForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
-
-  //   handleChange = ({ target: { name, value } }) => {
-  //     this.setState({ [name]: value });
-  //   };
-
-  //   handleSubmit = e => {
-  //     e.preventDefault();
-  //     if (
-  //       this.props.contacts.find(el => {
-  //         return el.name === this.state.name;
-  //       })
-  //     ) {
-  //       alert('Its allready in case');
-  //       this.reset();
-  //       return;
-  //     }
-  //     const { name, number } = this.state;
-  //     this.props.onSubmit({ name: name, number: number, id: nanoid() });
-  //     this.reset();
-  //   };
-
-  //   reset = () => {
-  //     this.setState({ name: '', number: '' });
-  //   };
-
   render() {
     return (
       <>
